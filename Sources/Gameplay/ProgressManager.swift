@@ -23,6 +23,10 @@ public struct ProgressState: Sendable {
         self.isVictory = isVictory
         self.starRating = starRating
     }
+
+    public var remainingIssuesCount: Int {
+        return max(0, totalTeeth - healthyTeeth)
+    }
 }
 
 /// Tracks score, progress percentage, and victory completion states for iOS.

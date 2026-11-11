@@ -85,11 +85,11 @@ public struct ToolButton: View {
         case .drill: return "tornado"
         case .resinTube: return "drop.fill"
         case .curingLight: return "flashlight.on.fill"
+        case .waterSpray: return "humidity.fill"
+        case .syringe: return "cross.vial.fill"
         case .forceps: return "scissors"
         case .implant: return "cross.fill"
-        case .suction: return "arrow.down.to.line.compact"
-        case .waterSpray: return "humidity.fill"
-        case .mirror: return "magnifyingglass"
+        case .tweezers: return "hand.point.up.fill"
         }
     }
 }

@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 /// The 10 specialized dental tools supported in the game.
 public enum DentalTool: String, CaseIterable, Identifiable, Sendable {
@@ -14,6 +15,21 @@ public enum DentalTool: String, CaseIterable, Identifiable, Sendable {
     case tweezers = "tool_tweezers"
 
     public var id: String { rawValue }
+
+    public var accentColor: Color {
+        switch self {
+        case .toothbrush: return Color.blue
+        case .scaler: return Color.green
+        case .drill: return Color.orange
+        case .resinTube: return Color.teal
+        case .curingLight: return Color.purple
+        case .waterSpray: return Color.cyan
+        case .syringe: return Color.red
+        case .forceps: return Color.gray
+        case .implant: return Color.yellow
+        case .tweezers: return Color.indigo
+        }
+    }
 
     public var displayName: String {
         switch self {

@@ -126,10 +126,10 @@ public final class StageCoordinator: ObservableObject, @unchecked Sendable {
         }()
 
         return StageStatus(
-            currentStage = stage,
+            currentStage: stage,
             stageProgressPercentage: progress,
             isCurrentStageFinished: stage == .complete,
-            activeTools = activeTools,
+            activeTools: activeTools,
             guidancePrompt: prompt
         )
     }

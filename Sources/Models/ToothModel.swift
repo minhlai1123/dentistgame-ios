@@ -67,6 +67,10 @@ public struct ToothModel: Identifiable, Codable, Sendable, Equatable {
         )
     }
 
+    public func copyWithState(_ newState: ToothState) -> ToothModel {
+        return copy(withState: newState)
+    }
+
     public func copy(withProgress newProgress: Double) -> ToothModel {
         return ToothModel(
             id: id,
