@@ -30,22 +30,24 @@ jobs:
         run: |
           xcodegen generate
 
-      - name: Build Archive (Unsigned)
+      - name: Build App for iOS Device (Unsigned)
         run: |
-          xcodebuild archive \
+          xcodebuild build \
             -project DentistGame.xcodeproj \
             -scheme DentistGame \
             -configuration Release \
+            -sdk iphoneos \
             -destination "generic/platform=iOS" \
-            -archivePath build/DentistGame.xcarchive \
+            -derivedDataPath build/DerivedData \
             CODE_SIGNING_ALLOWED=NO \
             CODE_SIGNING_REQUIRED=NO \
-            CODE_SIGN_IDENTITY=""
+            CODE_SIGN_IDENTITY="" \
+            AD_HOC_CODE_SIGNING_ALLOWED=YES
 
       - name: Package DentistGame.ipa
         run: |
           mkdir -p build/Payload
-          cp -R build/DentistGame.xcarchive/Products/Applications/DentistGame.app build/Payload/
+          cp -R build/DerivedData/Build/Products/Release-iphoneos/DentistGame.app build/Payload/
           cd build
           zip -r -q DentistGame.ipa Payload
           cd ..
