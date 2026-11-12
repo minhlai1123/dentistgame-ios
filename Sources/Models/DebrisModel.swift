@@ -35,4 +35,16 @@ public struct ForeignDebris: Identifiable, Sendable, Equatable {
             ForeignDebris(id: "debris_biscuit", name: "Vụn bánh quy", normalizedX: 0.64, normalizedY: 0.54, imageName: "debris_biscuit")
         ]
     }
+
+    public func copy(isRemoved: Bool? = nil) -> ForeignDebris {
+        return ForeignDebris(
+            id: self.id,
+            name: self.name,
+            normalizedX: self.normalizedX,
+            normalizedY: self.normalizedY,
+            imageName: self.imageName,
+            isRemoved: isRemoved ?? self.isRemoved,
+            points: self.points
+        )
+    }
 }
