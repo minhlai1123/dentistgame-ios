@@ -17,6 +17,10 @@ public enum DentalStage: String, CaseIterable, Codable, Sendable {
         }
     }
 
+    public var name: String {
+        return displayName
+    }
+
     public var description: String {
         switch self {
         case .brushing: return "Dùng bàn chải chà đều lên các răng ố vàng để làm sạch mảng bám thức ăn."

@@ -4,6 +4,7 @@ public struct StageStatus: Sendable, Equatable {
     public let currentStage: DentalStage
     public let stageProgressPercentage: Float
     public let isCurrentStageFinished: Bool
+    public var isCompleted: Bool { isCurrentStageFinished }
     public let activeTools: [DentalTool]
     public let guidancePrompt: String
 

@@ -256,6 +256,16 @@ public struct ClinicRoomView: View {
 
     private func updateAutoAdvanceTool() {
         switch stageStatus.currentStage {
+        case .brushing:
+            activeTool = .toothbrush
+            toolEngine.selectTool(.toothbrush)
+            messageBanner = "Dùng Bàn Chải chải sạch mảng bám thức ăn trên răng!"
+
+        case .scaling:
+            activeTool = .scaler
+            toolEngine.selectTool(.scaler)
+            messageBanner = "Dùng Cây Cạo Vôi cạo sạch các mảng vôi răng cứng đầu!"
+
         case .decay:
             let hasBacteria = teeth.contains { $0.state == .bacteria }
             let hasDrilled = teeth.contains { $0.state == .cavityDrilled }
@@ -281,11 +291,16 @@ public struct ClinicRoomView: View {
             }
 
         case .surgery:
+            let hasDebris = debrisList.contains { !$0.isRemoved }
             let hasNecrotic = teeth.contains { $0.state == .necroticCracked }
             let hasEmptySocket = teeth.contains { $0.state == .socketEmpty }
             let hasImplant = teeth.contains { $0.state == .implantPlaced }
 
-            if hasNecrotic && !stageCoordinator.canExtractTooth() {
+            if hasDebris {
+                activeTool = .tweezers
+                toolEngine.selectTool(.tweezers)
+                messageBanner = "Dùng Nhíp gắp các dị vật mắc trong miệng bỏ vào thùng rác!"
+            } else if hasNecrotic && !stageCoordinator.canExtractTooth() {
                 activeTool = .syringe
                 toolEngine.selectTool(.syringe)
                 messageBanner = "Bước 1/4: Dùng Ống Tiêm gây tê để bé không đau trước khi nhổ răng!"
@@ -303,33 +318,8 @@ public struct ClinicRoomView: View {
                 messageBanner = "Bước 4/4: Dùng Vòi Xịt nước rửa sạch hoàn tất!"
             }
 
-        case .hygiene:
-            let hasDirt = teeth.contains { $0.state == .dirtStained }
-            let hasCalculus = teeth.contains { $0.state == .calculus }
-
-            if hasDirt {
-                activeTool = .toothbrush
-                toolEngine.selectTool(.toothbrush)
-                messageBanner = "Dùng Bàn Chải chải sạch mảng bám thức ăn trên răng!"
-            } else if hasCalculus {
-                activeTool = .scaler
-                toolEngine.selectTool(.scaler)
-                messageBanner = "Dùng Cây Cạo Vôi cạo sạch các mảng vôi răng cứng đầu!"
-            } else {
-                activeTool = .waterSpray
-                toolEngine.selectTool(.waterSpray)
-                messageBanner = "Dùng Vòi Xịt nước xịt trôi bọt kem và làm trắng bóng răng!"
-            }
-
-        case .diagnosis:
-            activeTool = .mirror
-            toolEngine.selectTool(.mirror)
-            messageBanner = "Dùng Gương Nha Khoa soi kiểm tra toàn bộ hàm răng!"
-
-        case .debris:
-            activeTool = .tweezers
-            toolEngine.selectTool(.tweezers)
-            messageBanner = "Dùng Nhíp gắp các dị vật mắc trong miệng bỏ vào thùng rác!"
+        case .complete:
+            messageBanner = "Tuyệt vời! Toàn bộ hàm răng đã sạch bóng và khỏe mạnh!"
         }
     }
 
