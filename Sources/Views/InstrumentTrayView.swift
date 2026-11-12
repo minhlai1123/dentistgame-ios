@@ -18,62 +18,84 @@ public struct InstrumentTrayView: View {
     public var body: some View {
         VStack(spacing: 0) {
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 12) {
+                HStack(spacing: 10) {
                     ForEach(tools) { tool in
-                        ToolButton(
+                        ToolItemView(
                             tool: tool,
                             isSelected: tool == activeTool,
                             onClick: { onSelectTool(tool) }
                         )
                     }
                 }
-                .padding(.horizontal, 16)
-                .padding(.vertical, 12)
+                .padding(.horizontal, 14)
+                .padding(.vertical, 8)
             }
         }
-        .background(
-            Color(red: 0.94, green: 0.96, blue: 0.98)
-                .cornerRadius(24, corners: [.topLeft, .topRight])
-                .shadow(color: Color.black.opacity(0.08), radius: 8, x: 0, y: -4)
+        .frame(height: 118)
+        .background(Color.trayWood)
+        .overlay(
+            VStack {
+                Rectangle()
+                    .fill(Color.trayBorder)
+                    .frame(height: 2)
+                Spacer()
+            }
         )
+        .cornerRadius(24, corners: [.topLeft, .topRight])
+        .shadow(color: Color.black.opacity(0.06), radius: 6, x: 0, y: -3)
     }
 }
 
-public struct ToolButton: View {
+public struct ToolItemView: View {
     public let tool: DentalTool
     public let isSelected: Bool
     public let onClick: () -> Void
 
+    private var borderColor: Color {
+        isSelected ? Color(hex: "FFB300") : Color(hex: "B0BEC5").opacity(0.3)
+    }
+
+    private var bgColor: Color {
+        isSelected ? Color(hex: "FFF8E1") : Color.white
+    }
+
     public var body: some View {
         Button(action: onClick) {
-            VStack(spacing: 6) {
+            VStack(spacing: 4) {
+                // High-resolution tool graphic with fallback
                 ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(isSelected ? Color(red: 1.0, green: 0.97, blue: 0.88) : Color.white)
-                        .frame(width: 72, height: 72)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(isSelected ? Color(red: 1.0, green: 0.70, blue: 0.0) : Color(red: 0.88, green: 0.91, blue: 0.94), lineWidth: isSelected ? 3 : 1)
-                        )
-                        .shadow(color: isSelected ? Color(red: 1.0, green: 0.70, blue: 0.0).opacity(0.3) : Color.black.opacity(0.04), radius: isSelected ? 6 : 2, x: 0, y: 2)
-
-                    // Tool Icon / Symbol
-                    VStack(spacing: 2) {
+                    if let uiImage = UIImage(named: isSelected ? "\(tool.rawValue)_selected" : tool.rawValue) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 52, height: 52)
+                    } else if let fallbackImg = UIImage(named: tool.rawValue) {
+                        Image(uiImage: fallbackImg)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 52, height: 52)
+                    } else {
+                        // Fallback SF Symbol
                         Image(systemName: toolSystemIcon(for: tool))
                             .font(.system(size: 26, weight: .bold))
                             .foregroundColor(tool.accentColor)
-
-                        Circle()
-                            .fill(isSelected ? Color(red: 1.0, green: 0.70, blue: 0.0) : Color.clear)
-                            .frame(width: 6, height: 6)
+                            .frame(width: 52, height: 52)
                     }
                 }
 
                 Text(tool.displayName)
-                    .font(.system(size: 11, weight: isSelected ? .bold : .medium, design: .rounded))
-                    .foregroundColor(isSelected ? Color(red: 0.70, green: 0.35, blue: 0.0) : Color(red: 0.12, green: 0.16, blue: 0.23))
+                    .font(.system(size: 10, weight: isSelected ? .heavy : .bold, design: .rounded))
+                    .foregroundColor(isSelected ? Color(hex: "B45309") : Color(hex: "1E293B"))
                     .lineLimit(1)
             }
+            .frame(width: 82, height: 96)
+            .background(bgColor)
+            .cornerRadius(18)
+            .overlay(
+                RoundedRectangle(cornerRadius: 18)
+                    .stroke(borderColor, lineWidth: isSelected ? 3 : 1)
+            )
+            .shadow(color: isSelected ? Color(hex: "FFB300").opacity(0.25) : Color.black.opacity(0.04), radius: isSelected ? 5 : 2, x: 0, y: 2)
         }
         .buttonStyle(.plain)
     }

@@ -9,6 +9,7 @@ public struct MainMenuView: View {
     public let onOpenMiniGames: () -> Void
 
     @State private var showSettings: Bool = false
+    @State private var heroPulse: Bool = false
 
     public init(
         audioManager: AudioManager,
@@ -28,33 +29,42 @@ public struct MainMenuView: View {
 
     public var body: some View {
         ZStack {
-            Color(red: 0.94, green: 0.98, blue: 1.0)
-                .ignoresSafeArea()
+            // Soft gradient background matching Android (SoftPeach -> PastelLavender -> SkyBlue)
+            LinearGradient(
+                colors: [Color.softPeach, Color.pastelLavender, Color.skyBlue],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
 
-            VStack(spacing: 24) {
-                // Top Bar
+            VStack(spacing: 20) {
+                // Top Bar: Stats Pill & Settings Button
                 HStack {
                     // Stats pill
                     HStack(spacing: 12) {
                         HStack(spacing: 4) {
                             Text("⭐")
                             Text("\(saveManager.totalStars) \(localizationManager.t("stats_stars"))")
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundColor(Color.orange)
+                                .font(.system(size: 12, weight: .heavy, design: .rounded))
+                                .foregroundColor(Color(hex: "D97706"))
                         }
 
                         HStack(spacing: 4) {
                             Text("🦷")
                             Text("\(saveManager.totalPatientsCured) \(localizationManager.t("stats_patients"))")
-                                .font(.system(size: 12, weight: .bold))
-                                .foregroundColor(Color.blue)
+                                .font(.system(size: 12, weight: .heavy, design: .rounded))
+                                .foregroundColor(Color.skyBlueDark)
                         }
                     }
                     .padding(.horizontal, 14)
                     .padding(.vertical, 8)
                     .background(Color.white)
                     .cornerRadius(20)
-                    .shadow(color: .black.opacity(0.06), radius: 4)
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(hex: "FDE68A"), lineWidth: 1.5)
+                    )
+                    .shadow(color: Color.black.opacity(0.04), radius: 4, y: 2)
 
                     Spacer()
 
@@ -63,68 +73,105 @@ public struct MainMenuView: View {
                         audioManager.playButtonClick()
                         showSettings = true
                     }) {
-                        ZStack {
-                            Circle()
-                                .fill(Color.white)
-                                .frame(width: 44, height: 44)
-                                .shadow(color: .black.opacity(0.06), radius: 4)
-                            Text("⚙️")
-                                .font(.system(size: 20))
-                        }
+                        Text("⚙️")
+                            .font(.system(size: 20))
+                            .frame(width: 44, height: 44)
+                            .background(Color.white)
+                            .clipShape(Circle())
+                            .overlay(Circle().stroke(Color.black.opacity(0.08), lineWidth: 1))
+                            .shadow(color: Color.black.opacity(0.06), radius: 4, y: 2)
                     }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, 18)
                 .padding(.top, 10)
 
                 Spacer()
 
-                // Hero Logo
+                // Hero Logo & Title
                 VStack(spacing: 14) {
                     ZStack {
                         Circle()
                             .fill(Color.white)
-                            .frame(width: 110, height: 110)
+                            .frame(width: 120, height: 120)
                             .overlay(
-                                Circle().stroke(Color.blue.opacity(0.3), lineWidth: 4)
+                                Circle().stroke(Color.skyBlueDark.opacity(0.3), lineWidth: 4)
                             )
-                            .shadow(color: .black.opacity(0.08), radius: 6)
+                            .shadow(color: Color.black.opacity(0.08), radius: 8, y: 4)
+
                         Text("🏥")
-                            .font(.system(size: 52))
+                            .font(.system(size: 56))
+                    }
+                    .scaleEffect(heroPulse ? 1.05 : 0.95)
+                    .onAppear {
+                        withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
+                            heroPulse = true
+                        }
                     }
 
-                    Text(localizationManager.t("app_name"))
-                        .font(.system(size: 24, weight: .black))
-                        .foregroundColor(Color(red: 0.06, green: 0.09, blue: 0.16))
+                    VStack(spacing: 4) {
+                        Text("BÁC SĨ NHA KHOA")
+                            .font(.system(size: 28, weight: .black, design: .rounded))
+                            .foregroundColor(Color.skyBlueDark)
 
-                    Text(localizationManager.t("char_select_subtitle"))
-                        .font(.system(size: 13))
-                        .foregroundColor(.secondary)
-                        .multilineTextAlignment(.center)
+                        Text("CHĂM SÓC RĂNG MIỆNG CHO BÉ")
+                            .font(.system(size: 13, weight: .bold, design: .rounded))
+                            .foregroundColor(Color(red: 0.28, green: 0.33, blue: 0.41))
+                            .tracking(1.2)
+                    }
                 }
 
                 Spacer()
 
                 // Action Buttons
                 VStack(spacing: 14) {
-                    // Play Button
+                    // Start Treatment Button
                     Button(action: {
                         audioManager.playButtonClick()
                         onStartGame()
                     }) {
                         HStack(spacing: 10) {
                             Text("▶")
-                                .font(.system(size: 18, weight: .bold))
-                            Text(localizationManager.t("menu_play"))
-                                .font(.system(size: 16, weight: .black))
+                                .font(.system(size: 18, weight: .heavy))
+                            Text("BẮT ĐẦU CHỮA RĂNG")
+                                .font(.system(size: 17, weight: .heavy, design: .rounded))
                         }
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
-                        .frame(height: 56)
+                        .padding(.vertical, 16)
                         .background(
-                            LinearGradient(colors: [Color.blue, Color(red: 0.2, green: 0.7, blue: 0.95)], startPoint: .leading, endPoint: .trailing)
+                            LinearGradient(
+                                colors: [Color(hex: "0284C7"), Color(hex: "0369A1")],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
                         )
-                        .cornerRadius(18)
-                        .shadow(color: .blue.opacity(0.3), radius: 6, y: 3)
+                        .cornerRadius(22)
+                        .shadow(color: Color(hex: "0284C7").opacity(0.35), radius: 8, x: 0, y: 4)
+                    }
+
+                    // 4 Mini-games Hub Button
+                    Button(action: {
+                        audioManager.playButtonClick()
+                        onOpenMiniGames()
+                    }) {
+                        HStack(spacing: 10) {
+                            Text("🎮")
+                                .font(.system(size: 20))
+                            Text("4 MINI-GAMES GIÁO DỤC")
+                                .font(.system(size: 15, weight: .heavy, design: .rounded))
+                        }
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(
+                            LinearGradient(
+                                colors: [Color(hex: "F43F5E"), Color(hex: "E11D48")],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                        .cornerRadius(20)
+                        .shadow(color: Color(hex: "F43F5E").opacity(0.3), radius: 6, x: 0, y: 3)
                     }
 
                     // Level Select Button
@@ -134,44 +181,33 @@ public struct MainMenuView: View {
                     }) {
                         HStack(spacing: 8) {
                             Text("🗺️")
-                            Text(localizationManager.t("menu_level_select"))
-                                .font(.system(size: 15, weight: .bold))
-                                .foregroundColor(.blue)
+                                .font(.system(size: 18))
+                            Text("BẢN ĐỒ THỬ THÁCH (CẤP ĐỘ)")
+                                .font(.system(size: 14, weight: .bold, design: .rounded))
+                                .foregroundColor(Color(hex: "334155"))
                         }
                         .frame(maxWidth: .infinity)
-                        .frame(height: 52)
-                        .background(Color.white)
+                        .padding(.vertical, 12)
+                        .background(Color.white.opacity(0.95))
                         .cornerRadius(18)
-                        .shadow(color: .black.opacity(0.06), radius: 4)
-                    }
-
-                    // Mini-Games Hub Button
-                    Button(action: {
-                        audioManager.playButtonClick()
-                        onOpenMiniGames()
-                    }) {
-                        HStack(spacing: 8) {
-                            Text("🎮")
-                            Text(localizationManager.t("menu_minigames"))
-                                .font(.system(size: 15, weight: .bold))
-                                .foregroundColor(.purple)
-                        }
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 52)
-                        .background(Color.white)
-                        .cornerRadius(18)
-                        .shadow(color: .black.opacity(0.06), radius: 4)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 18)
+                                .stroke(Color(hex: "CBD5E1"), lineWidth: 1.5)
+                        )
                     }
                 }
-                .padding(.horizontal)
-                .padding(.bottom, 20)
+                .padding(.horizontal, 24)
+                .padding(.bottom, 24)
             }
         }
         .onAppear {
             audioManager.startBgm(named: "bgm_main_menu")
         }
         .sheet(isPresented: $showSettings) {
-            SettingsSheet(saveManager: saveManager, localizationManager: localizationManager)
+            SettingsSheet(
+                saveManager: saveManager,
+                localizationManager: localizationManager
+            )
         }
     }
 }

@@ -25,4 +25,21 @@ extension Color {
             opacity: Double(a) / 255
         )
     }
+
+    // Matching Android Dentist Game Theme Palette
+    public static let softPeach = Color(hex: "FFF5EB")
+    public static let pastelLavender = Color(hex: "F3E8FF")
+    public static let skyBlue = Color(hex: "E0F2FE")
+    public static let skyBlueDark = Color(hex: "0284C7")
+    public static let mintGreen = Color(hex: "10B981")
+    public static let coralPink = Color(hex: "F43F5E")
+    public static let sunnyYellow = Color(hex: "FBBF24")
+    public static let deepNavy = Color(hex: "1E293B")
+    public static let trayWood = Color(hex: "FFFBEB")
+    public static let trayBorder = Color(hex: "FDE68A")
+    public static let accentCyan = Color(hex: "00E5FF")
+    public static let accentGold = Color(hex: "FFB300")
+    public static let cavityDark = Color(hex: "261815")
+    public static let resinTurquoise = Color(hex: "00E5FF")
+    public static let resinCured = Color(hex: "E0F7FA")
 }

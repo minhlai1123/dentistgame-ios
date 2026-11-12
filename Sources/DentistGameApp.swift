@@ -102,22 +102,18 @@ public struct DentistGameApp: App {
 
             case .result(let character, let score, let stars):
                 let nextLevelCharacter: CharacterModel? = {
-                    switch character.id {
-                    case "char_01_leo": return characters.first(where: { $0.id == "char_02_maya" })
-                    case "char_02_maya": return characters.first(where: { $0.id == "char_03_kenji" })
-                    case "char_03_kenji": return characters.first(where: { $0.id == "char_04_amara" })
-                    case "char_04_amara": return characters.first(where: { $0.id == "char_05_mia" })
-                    case "char_05_mia": return characters.first(where: { $0.id == "char_06_ben" })
-                    case "char_06_ben": return nil
-                    default: return nil
+                    if let currentIndex = characters.firstIndex(where: { $0.id == character.id }),
+                       currentIndex + 1 < characters.count {
+                        return characters[currentIndex + 1]
                     }
+                    return nil
                 }()
 
                 ResultView(
                     character: character,
                     score: score,
                     stars: stars,
-                    hasNextLevel: nextLevelCharacter != nil && saveManager.isLevelUnlocked(DifficultyLevel.getLevelForCharacter(characterId: nextLevelCharacter!.id).rawValue),
+                    hasNextLevel: nextLevelCharacter != nil,
                     audioManager: audioManager,
                     localizationManager: localizationManager,
                     onReplay: {
