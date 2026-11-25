@@ -4,8 +4,8 @@ import PackageDescription
 let package = Package(
     name: "DentistGame",
     platforms: [
-        .iOS(.v17),
-        .macOS(.v14)
+        .iOS(.v15),
+        .macOS(.v13)
     ],
     products: [
         .library(

@@ -41,7 +41,7 @@ public struct SettingsSheet: View {
                     Toggle(isOn: $audioManager.isBgmEnabled) {
                         Label(t("settings_bgm"), systemImage: "music.note")
                     }
-                    .onChange(of: audioManager.isBgmEnabled) { _, newValue in
+                    .onChange(of: audioManager.isBgmEnabled) { newValue in
                         audioManager.toggleBgm(newValue)
                     }
 

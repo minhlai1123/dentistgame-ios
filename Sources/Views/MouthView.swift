@@ -61,7 +61,7 @@ public struct MouthView: View {
                     // 4. Draw Particle System
                     drawParticles(in: &context)
                 }
-                .onChange(of: timeline.date) { _, _ in
+                .onChange(of: timeline.date) { _ in
                     particleSystem.update(dt: 0.016)
                 }
             }
