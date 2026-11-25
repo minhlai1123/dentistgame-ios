@@ -2,7 +2,7 @@ name: DentistGame
 options:
   bundleIdPrefix: com.minhlai1123
   deploymentTarget:
-    iOS: "15.0"
+    iOS: "16.0"
   xcodeVersion: "16.0"
   groupSortPosition: top
 
@@ -10,7 +10,7 @@ targets:
   DentistGame:
     type: application
     platform: iOS
-    deploymentTarget: "15.0"
+    deploymentTarget: "16.0"
     sources:
       - path: Sources
         createIntermediateGroups: true

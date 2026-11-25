@@ -99,22 +99,26 @@ public struct BacteriaLaserShooterView: View {
                         }
                     }
                     .contentShape(Rectangle())
-                    .onTapGesture { location in
-                        guard !engine.isGameOver() else { return }
-                        laserBeamTarget = location
-                        audioManager.playLaserShot()
+                    .gesture(
+                        DragGesture(minimumDistance: 0)
+                            .onEnded { value in
+                                let location = value.location
+                                guard !engine.isGameOver() else { return }
+                                laserBeamTarget = location
+                                audioManager.playLaserShot()
 
-                        let normX = Double(location.x / geo.size.width)
-                        let normY = Double(location.y / geo.size.height)
-                        let hit = engine.shootLaser(touchX: normX, touchY: normY)
-                        if hit && engine.isVictory() {
-                            audioManager.playVictoryCelebration()
-                        }
+                                let normX = Double(location.x / geo.size.width)
+                                let normY = Double(location.y / geo.size.height)
+                                let hit = engine.shootLaser(touchX: normX, touchY: normY)
+                                if hit && engine.isVictory() {
+                                    audioManager.playVictoryCelebration()
+                                }
 
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
-                            laserBeamTarget = nil
-                        }
-                    }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+                                    laserBeamTarget = nil
+                                }
+                            }
+                    )
                 }
 
                 // Game Over Overlay
