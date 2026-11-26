@@ -63,24 +63,6 @@ public struct SettingsSheet: View {
                     }
                 }
 
-                // Language Section
-                if let loc = localizationManager {
-                    Section(header: Text(t("settings_language")).font(.system(size: 13, weight: .bold))) {
-                        Picker(t("settings_language"), selection: Binding(
-                            get: { loc.currentLanguage },
-                            set: {
-                                loc.setLanguage($0)
-                                saveManager?.saveLanguage($0)
-                            }
-                        )) {
-                            ForEach(AppLanguage.allCases) { lang in
-                                Text(lang.displayName).tag(lang)
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                }
-
                 // Reset Progress Section
                 if let save = saveManager {
                     Section {

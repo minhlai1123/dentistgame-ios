@@ -2,16 +2,12 @@ import Foundation
 import SwiftUI
 
 public enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
-    case vietnamese = "vi"
     case english = "en"
 
     public var id: String { rawValue }
 
     public var displayName: String {
-        switch self {
-        case .vietnamese: return "Tiếng Việt"
-        case .english: return "English"
-        }
+        return "English"
     }
 }
 
@@ -21,59 +17,12 @@ public final class LocalizationManager: ObservableObject, @unchecked Sendable {
     @Published public var currentLanguage: AppLanguage = .english
 
     public init(language: AppLanguage = .english) {
-        self.currentLanguage = language
+        self.currentLanguage = .english
     }
 
     public func setLanguage(_ language: AppLanguage) {
-        self.currentLanguage = language
+        self.currentLanguage = .english
     }
-
-    private let viStrings: [String: String] = [
-        "app_name": "Bác Sĩ Nha Khoa Trẻ Em",
-        "splash_tap": "Chạm vào màn hình để bắt đầu",
-        "menu_play": "BẮT ĐẦU CHƠI",
-        "menu_level_select": "CHỌN CẤP ĐỘ",
-        "menu_minigames": "MINI-GAMES GIÁO DỤC",
-        "menu_settings": "CÀI ĐẶT",
-        "stats_stars": "sao",
-        "stats_patients": "bệnh nhân",
-
-        "char_select_title": "CHỌN BỆNH NHÂN",
-        "char_select_subtitle": "Khám và chữa trị cho 6 bạn nhỏ đáng yêu",
-        "char_treat_btn": "KHÁM RĂNG",
-
-        "level_select_title": "CHỌN CẤP ĐỘ",
-        "level_select_subtitle": "Vượt qua từng thử thách để trở thành Nha sĩ tài ba",
-        "lvl_tutorial_title": "Tập Sự: Khởi Động Đánh Răng",
-        "lvl_easy_title": "Dễ: Cạo Vôi & Trị Sâu Răng Nhẹ",
-        "lvl_medium_title": "Trung Bình: Nha Khoa Tổng Hợp",
-        "lvl_hard_title": "Khó: Thử Thách Bác Sĩ Toàn Diện",
-        "lvl_locked": "Khóa",
-        "lvl_requires": "Cần %d sao để mở",
-        "lvl_high_score": "Điểm cao: %d điểm",
-
-        "stage_1": "1. Chải Răng",
-        "stage_2": "2. Cạo Vôi",
-        "stage_3": "3. Trị Sâu",
-        "stage_4": "4. Phẫu Thuật",
-        "stage_complete": "Hoàn Tất",
-
-        "result_title": "🎉 XUẤT SẮC! 🎉",
-        "result_subtitle": "Hàm răng của bé đã hoàn toàn sạch khỏe và sáng bóng!",
-        "result_score": "Điểm số: %d điểm",
-        "result_btn_replay": "Chơi Lại",
-        "result_btn_next": "Màn Tiếp Theo",
-        "result_btn_menu": "Về Trang Chủ",
-
-        "settings_title": "CÀI ĐẶT",
-        "settings_bgm": "Nhạc Nền (BGM)",
-        "settings_sfx": "Hiệu Ứng (SFX)",
-        "settings_language": "Ngôn Ngữ",
-        "settings_reset_btn": "Đặt Lại Tiến Trình",
-        "settings_reset_confirm": "Bạn có chắc muốn đặt lại toàn bộ tiến trình không?",
-        "btn_close": "Đóng",
-        "btn_back": "Quay Lại"
-    ]
 
     private let enStrings: [String: String] = [
         "app_name": "Children's Doctor Dentist",
@@ -86,7 +35,7 @@ public final class LocalizationManager: ObservableObject, @unchecked Sendable {
         "stats_patients": "patients",
 
         "char_select_title": "CHOOSE PATIENT",
-        "char_select_subtitle": "Examine and treat 6 friendly patients",
+        "char_select_subtitle": "Examine and treat friendly patients",
         "char_treat_btn": "TREAT TEETH",
 
         "level_select_title": "LEVEL SELECTION",
@@ -123,11 +72,11 @@ public final class LocalizationManager: ObservableObject, @unchecked Sendable {
     ]
 
     public func t(_ key: String, _ args: CVarArg...) -> String {
-        let dict = (currentLanguage == .vietnamese) ? viStrings : enStrings
-        guard let format = dict[key] else { return key }
+        guard let format = enStrings[key] else { return key }
         if !args.isEmpty {
             return String(format: format, arguments: args)
         }
         return format
     }
+}
 }

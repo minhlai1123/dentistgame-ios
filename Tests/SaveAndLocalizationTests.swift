@@ -3,13 +3,6 @@ import XCTest
 
 final class SaveAndLocalizationTests: XCTestCase {
 
-    func testLocalizationManagerVietnamese() {
-        let loc = LocalizationManager(language: .vietnamese)
-        XCTAssertEqual(loc.t("app_name"), "Bác Sĩ Nha Khoa Trẻ Em")
-        XCTAssertEqual(loc.t("char_select_title"), "CHỌN BỆNH NHÂN")
-        XCTAssertEqual(loc.t("stage_1"), "1. Chải Răng")
-    }
-
     func testLocalizationManagerEnglish() {
         let loc = LocalizationManager(language: .english)
         XCTAssertEqual(loc.t("app_name"), "Children's Doctor Dentist")
@@ -18,9 +11,6 @@ final class SaveAndLocalizationTests: XCTestCase {
     }
 
     func testLocalizationFormatArgs() {
-        let locVi = LocalizationManager(language: .vietnamese)
-        XCTAssertEqual(locVi.t("lvl_requires", 3), "Cần 3 sao để mở")
-
         let locEn = LocalizationManager(language: .english)
         XCTAssertEqual(locEn.t("lvl_requires", 3), "Requires 3 stars to unlock")
     }
