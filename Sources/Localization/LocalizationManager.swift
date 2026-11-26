@@ -79,4 +79,3 @@ public final class LocalizationManager: ObservableObject, @unchecked Sendable {
         return format
     }
 }
-}
