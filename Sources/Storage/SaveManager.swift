@@ -83,8 +83,7 @@ public final class SaveManager: ObservableObject, @unchecked Sendable {
     }
 
     public func getSavedLanguage() -> AppLanguage {
-        let code = defaults.string(forKey: "app_language") ?? "vi"
-        return (code == "en") ? .english : .vietnamese
+        return .english
     }
 
     public func saveLanguage(_ language: AppLanguage) {
