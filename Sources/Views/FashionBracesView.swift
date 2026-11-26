@@ -42,19 +42,19 @@ public struct FashionBracesView: View {
 
                     Spacer()
 
-                    Text("NIỀNG RĂNG THỜI TRANG")
+                    Text("FASHION BRACES")
                         .font(.system(size: 20, weight: .black))
                         .foregroundColor(Color(red: 0.06, green: 0.09, blue: 0.16))
 
                     Spacer()
 
-                    Text("Điểm: \(engine.getScore())")
+                    Text("Score: \(engine.getScore())")
                         .font(.system(size: 16, weight: .bold))
                         .foregroundColor(.pink)
                 }
                 .padding(.horizontal)
 
-                Text("Chọn màu sắc mắc cài và kiểu đá quý, rồi chạm vào từng răng để trang trí!")
+                Text("Choose bracket colors and gem styles, then tap teeth to decorate!")
                     .font(.system(size: 13))
                     .foregroundColor(.secondary)
                     .multilineTextAlignment(.center)
@@ -62,7 +62,7 @@ public struct FashionBracesView: View {
 
                 // Color palette selector
                 HStack(spacing: 12) {
-                    Text("Màu sắc:")
+                    Text("Color:")
                         .font(.system(size: 12, weight: .bold))
                         .foregroundColor(.secondary)
 
@@ -85,7 +85,7 @@ public struct FashionBracesView: View {
 
                 // Gem selector
                 HStack(spacing: 12) {
-                    Text("Đá quý:")
+                    Text("Gem:")
                         .font(.system(size: 12, weight: .bold))
                         .foregroundColor(.secondary)
 
@@ -133,7 +133,7 @@ public struct FashionBracesView: View {
                         audioManager.playButtonClick()
                         engine.reset()
                     }) {
-                        Text("Làm Lại")
+                        Text("Reset")
                             .fontWeight(.bold)
                             .foregroundColor(.pink)
                             .padding(.horizontal, 20)
@@ -146,7 +146,7 @@ public struct FashionBracesView: View {
                         audioManager.playSuccess()
                         showSavedAlert = true
                     }) {
-                        Text("Lưu Tác Phẩm ✨")
+                        Text("Save Smile ✨")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding(.horizontal, 24)
@@ -161,9 +161,9 @@ public struct FashionBracesView: View {
         }
         .alert(isPresented: $showSavedAlert) {
             Alert(
-                title: Text("Đã Lưu Tác Phẩm!"),
-                message: Text("Nụ cười của bệnh nhân giờ đây thật tỏa sáng và phong cách với bộ niềng răng rực rỡ!"),
-                dismissButton: .default(Text("Tuyệt Vời!"))
+                title: Text("Design Saved!"),
+                message: Text("The patient's smile is now glowing and fashionable with colorful braces!"),
+                dismissButton: .default(Text("Awesome!"))
             )
         }
     }

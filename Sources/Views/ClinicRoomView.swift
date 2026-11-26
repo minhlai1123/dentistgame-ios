@@ -9,7 +9,7 @@ public struct ClinicRoomView: View {
     @State private var debrisList: [ForeignDebris]
     @State private var activeTool: DentalTool? = .toothbrush
     @State private var currentScore: Int = 0
-    @State private var messageBanner: String = "Chào mừng! Cùng chăm sóc hàm răng thật sạch đẹp nhé!"
+    @State private var messageBanner: String = "Welcome! Let's take great care of the patient's teeth!"
     @State private var showVictory: Bool = false
     @State private var showSettings: Bool = false
     @State private var showTutorial: Bool = true
@@ -77,7 +77,7 @@ public struct ClinicRoomView: View {
                 if showTutorial {
                     TutorialBubble(
                         instructionText: messageBanner,
-                        skipText: "Bỏ qua",
+                        skipText: "Skip",
                         onSkip: { showTutorial = false }
                     )
                     .padding(.top, 4)
@@ -180,7 +180,7 @@ public struct ClinicRoomView: View {
                     originY: target.normalizedY * canvasSize.height,
                     count: 15
                 )
-                messageBanner = "Đã gây tê giảm đau! Giờ có thể dùng kìm nhổ răng."
+                messageBanner = "Anesthesia applied! Now use forceps to extract the tooth."
             }
             return
         }
@@ -188,13 +188,13 @@ public struct ClinicRoomView: View {
         // Forceps anesthesia gating check
         if tool == .forceps && !stageCoordinator.canExtractTooth() {
             audioManager.playWrongBuzz()
-            messageBanner = "Bé hãy dùng Ống Tiêm gây tê trước khi nhổ răng để bạn không bị đau nhé!"
+            messageBanner = "Please use the Syringe to apply gentle anesthesia before extracting!"
             return
         }
 
         // Friendly advice for resin without drilling
         if tool == .resinTube && target.state == .bacteria {
-            messageBanner = "Bé hãy dùng Máy Khoan nạo sạch vết sâu trước, rồi mới bơm keo trám nhé!"
+            messageBanner = "Please use the Dental Drill to clean cavities before applying resin!"
             return
         }
 
@@ -221,7 +221,7 @@ public struct ClinicRoomView: View {
                 let newStatus = stageCoordinator.getStageStatus(teeth: teeth, debrisList: debrisList)
                 if newStatus.isCompleted {
                     audioManager.playSuccess()
-                    messageBanner = "Tuyệt vời! Giai đoạn \(newStatus.currentStage.name) đã hoàn thành!"
+                    messageBanner = "Awesome! Stage \(newStatus.currentStage.name) completed!"
                 } else {
                     messageBanner = newStatus.guidancePrompt
                 }
@@ -244,13 +244,13 @@ public struct ClinicRoomView: View {
 
     private func handleDebrisHit(debris: ForeignDebris) {
         guard activeTool == .tweezers else {
-            messageBanner = "Dùng Nhíp Mổ gắp dị vật ra khỏi miệng nhé!"
+            messageBanner = "Use Tweezers to remove debris from mouth!"
             return
         }
         debrisList = debrisList.map { $0.id == debris.id ? $0.copy(isRemoved: true) : $0 }
         currentScore += 30
         audioManager.playSuccess()
-        messageBanner = "Đã gắp dị vật thành công! Bỏ vào thùng rác."
+        messageBanner = "Debris removed successfully!"
         updateAutoAdvanceTool()
     }
 
@@ -259,12 +259,12 @@ public struct ClinicRoomView: View {
         case .brushing:
             activeTool = .toothbrush
             toolEngine.selectTool(.toothbrush)
-            messageBanner = "Dùng Bàn Chải chải sạch mảng bám thức ăn trên răng!"
+            messageBanner = "Use Toothbrush to clean food stains off teeth!"
 
         case .scaling:
             activeTool = .scaler
             toolEngine.selectTool(.scaler)
-            messageBanner = "Dùng Cây Cạo Vôi cạo sạch các mảng vôi răng cứng đầu!"
+            messageBanner = "Use Scaler to remove stubborn tartar deposits!"
 
         case .decay:
             let hasBacteria = teeth.contains { $0.state == .bacteria }
@@ -275,19 +275,19 @@ public struct ClinicRoomView: View {
             if hasBacteria {
                 activeTool = .drill
                 toolEngine.selectTool(.drill)
-                messageBanner = "Bước 1/4: Dùng Máy Khoan nạo sạch vi khuẩn/đốm đen!"
+                messageBanner = "Step 1/4: Use Dental Drill to clean away cavities!"
             } else if hasDrilled {
                 activeTool = .resinTube
                 toolEngine.selectTool(.resinTube)
-                messageBanner = "Bước 2/4: Đã khoan sạch! Chạm Ống Keo Trám vào lỗ sâu để bơm men sứ!"
+                messageBanner = "Step 2/4: Cleaned! Tap Resin Tube on cavity to fill!"
             } else if hasResinFilled {
                 activeTool = .curingLight
                 toolEngine.selectTool(.curingLight)
-                messageBanner = "Bước 3/4: Rê Đèn Quang sấy đông cứng vết keo trám!"
+                messageBanner = "Step 3/4: Use UV Light to cure and harden the resin!"
             } else if hasResinCured {
                 activeTool = .waterSpray
                 toolEngine.selectTool(.waterSpray)
-                messageBanner = "Bước 4/4: Dùng Vòi Xịt rửa sạch hoàn tất hàm răng!"
+                messageBanner = "Step 4/4: Use Water Spray to rinse clean!"
             }
 
         case .surgery:
@@ -299,27 +299,27 @@ public struct ClinicRoomView: View {
             if hasDebris {
                 activeTool = .tweezers
                 toolEngine.selectTool(.tweezers)
-                messageBanner = "Dùng Nhíp gắp các dị vật mắc trong miệng bỏ vào thùng rác!"
+                messageBanner = "Use Tweezers to pick out trapped debris!"
             } else if hasNecrotic && !stageCoordinator.canExtractTooth() {
                 activeTool = .syringe
                 toolEngine.selectTool(.syringe)
-                messageBanner = "Bước 1/4: Dùng Ống Tiêm gây tê để bé không đau trước khi nhổ răng!"
+                messageBanner = "Step 1/4: Use Syringe to apply gentle numbing before extraction!"
             } else if hasNecrotic && stageCoordinator.canExtractTooth() {
                 activeTool = .forceps
                 toolEngine.selectTool(.forceps)
-                messageBanner = "Bước 2/4: Thuốc tê đã ngấm! Dùng Kìm nhổ chiếc răng sâu vỡ ra!"
+                messageBanner = "Step 2/4: Numbed! Use Forceps to gently extract decayed tooth!"
             } else if hasEmptySocket {
                 activeTool = .implant
                 toolEngine.selectTool(.implant)
-                messageBanner = "Bước 3/4: Đặt Răng Sứ mới vào chân răng vừa nhổ!"
+                messageBanner = "Step 3/4: Place shiny new Porcelain Implant into socket!"
             } else if hasImplant {
                 activeTool = .waterSpray
                 toolEngine.selectTool(.waterSpray)
-                messageBanner = "Bước 4/4: Dùng Vòi Xịt nước rửa sạch hoàn tất!"
+                messageBanner = "Step 4/4: Use Water Spray to rinse clean!"
             }
 
         case .complete:
-            messageBanner = "Tuyệt vời! Toàn bộ hàm răng đã sạch bóng và khỏe mạnh!"
+            messageBanner = "Awesome! The smile is sparkling clean and healthy!"
         }
     }
 
@@ -379,7 +379,7 @@ public struct ClinicHUDView: View {
 
             // Progress bar
             VStack(alignment: .trailing, spacing: 3) {
-                Text("\(Int(progressPercentage * 100))% Sạch")
+                Text("\(Int(progressPercentage * 100))% Clean")
                     .font(.system(size: 12, weight: .heavy, design: .rounded))
                     .foregroundColor(Color(red: 0.05, green: 0.60, blue: 0.40))
 
@@ -441,12 +441,12 @@ public struct VictoryCelebrationDialog: View {
                     }
                 }
 
-                Text("HOÀN THÀNH XUẤT SẮC!")
+                Text("TREATMENT COMPLETE!")
                     .font(.system(size: 20, weight: .heavy, design: .rounded))
                     .foregroundColor(Color(red: 0.02, green: 0.59, blue: 0.41))
                     .multilineTextAlignment(.center)
 
-                Text("Bé đã chữa lành hàm răng cho \(patientName) thật sáng bóng!")
+                Text("You gave \(patientName) a bright and healthy smile!")
                     .font(.system(size: 13, weight: .medium, design: .rounded))
                     .foregroundColor(Color(red: 0.28, green: 0.33, blue: 0.41))
                     .multilineTextAlignment(.center)
@@ -463,12 +463,12 @@ public struct VictoryCelebrationDialog: View {
                     }
                 }
 
-                Text("Tổng Điểm: \(score)")
+                Text("Total Score: \(score)")
                     .font(.system(size: 18, weight: .heavy, design: .rounded))
                     .foregroundColor(Color.skyBlueDark)
 
                 Button(action: onContinue) {
-                    Text("TIẾP TỤC")
+                    Text("CONTINUE")
                         .font(.system(size: 16, weight: .heavy, design: .rounded))
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)

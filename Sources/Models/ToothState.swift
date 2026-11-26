@@ -16,16 +16,16 @@ public enum ToothState: String, CaseIterable, Codable, Sendable {
 
     public var displayName: String {
         switch self {
-        case .clean: return "Răng Sạch"
-        case .dirtStained: return "Dính Vết Bẩn"
-        case .calculus: return "Bám Vôi Răng"
-        case .bacteria: return "Quái Vật Vi Khuẩn"
-        case .cavityDrilled: return "Lỗ Sâu Đã Khoan"
-        case .resinFilled: return "Đã Bơm Keo Trám"
-        case .resinCured: return "Keo Trám Đã Đông Cứng"
-        case .necroticCracked: return "Hoại Tử Nứt Nẻ"
-        case .socketEmpty: return "Ổ Răng Trống"
-        case .implantPlaced: return "Đã Trồng Răng Mới"
+        case .clean: return "Clean Tooth"
+        case .dirtStained: return "Dirt Stained"
+        case .calculus: return "Calculus Plaque"
+        case .bacteria: return "Bacteria Monster"
+        case .cavityDrilled: return "Cavity Drilled"
+        case .resinFilled: return "Resin Filled"
+        case .resinCured: return "Resin Cured"
+        case .necroticCracked: return "Necrotic Decay"
+        case .socketEmpty: return "Empty Socket"
+        case .implantPlaced: return "New Implant"
         }
     }
 

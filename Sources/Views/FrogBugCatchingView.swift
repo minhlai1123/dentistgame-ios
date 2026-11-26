@@ -31,7 +31,7 @@ public struct FrogBugCatchingView: View {
 
                     Spacer()
 
-                    Text("ẾCH BẮT VI KHUẨN")
+                    Text("FROG BUG CATCH")
                         .font(.system(size: 20, weight: .black))
                         .foregroundColor(Color(red: 0.06, green: 0.09, blue: 0.16))
 
@@ -43,7 +43,7 @@ public struct FrogBugCatchingView: View {
                 }
                 .padding(.horizontal)
 
-                Text("Chạm vào các chú vi khuẩn đang bay để ếch phóng lưỡi đớp sạch!")
+                Text("Tap flying bacteria bugs so the frog can catch them with its tongue!")
                     .font(.system(size: 13))
                     .foregroundColor(.secondary)
                     .padding(.top, 4)
@@ -99,7 +99,7 @@ public struct FrogBugCatchingView: View {
 
                 if engine.isVictory() {
                     VStack(spacing: 8) {
-                        Text("🎉 THẮNG LỢI! BẠN ĐÃ BẮT HẾT VI KHUẨN! 🎉")
+                        Text("🎉 VICTORY! ALL BACTERIA CAUGHT! 🎉")
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(.green)
 
@@ -107,7 +107,7 @@ public struct FrogBugCatchingView: View {
                             audioManager.playButtonClick()
                             engine.reset()
                         }) {
-                            Text("Chơi Lại")
+                            Text("Play Again")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 20)

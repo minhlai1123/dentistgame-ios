@@ -3,14 +3,14 @@ import SwiftUI
 /// TutorialBubble displays a prominent, child-friendly speech bubble with instructions and a skip button.
 public struct TutorialBubble: View {
     public let instructionText: String
-    public var skipText: String = "Bỏ qua"
+    public var skipText: String = "Skip"
     public let onSkip: () -> Void
 
     @State private var bounce: Bool = false
 
     public init(
         instructionText: String,
-        skipText: String = "Bỏ qua",
+        skipText: String = "Skip",
         onSkip: @escaping () -> Void
     ) {
         self.instructionText = instructionText

@@ -27,14 +27,14 @@ public final class HippoFoodEngine: ObservableObject, @unchecked Sendable {
     @Published public private(set) var currentItemIndex: Int = 0
 
     public let foodList: [FoodItem] = [
-        FoodItem(id: "food_apple", name: "Quả Táo Đỏ", isGoodForTeeth: true, imageName: "food_apple"),
-        FoodItem(id: "food_candy", name: "Kẹo Dẻo", isGoodForTeeth: false, imageName: "food_candy"),
-        FoodItem(id: "food_carrot", name: "Cà Rốt Tươi", isGoodForTeeth: true, imageName: "food_carrot"),
-        FoodItem(id: "food_soda", name: "Nước Ngọt Gas", isGoodForTeeth: false, imageName: "food_soda"),
-        FoodItem(id: "food_milk", name: "Sữa Tươi", isGoodForTeeth: true, imageName: "food_milk"),
-        FoodItem(id: "food_lollipop", name: "Kẹo Mút", isGoodForTeeth: false, imageName: "food_lollipop"),
-        FoodItem(id: "food_apple_2", name: "Táo Giòn", isGoodForTeeth: true, imageName: "food_apple"),
-        FoodItem(id: "food_candy_2", name: "Kẹo Ngọt", isGoodForTeeth: false, imageName: "food_candy")
+        FoodItem(id: "food_apple", name: "Red Apple", isGoodForTeeth: true, imageName: "food_apple"),
+        FoodItem(id: "food_candy", name: "Gummy Candy", isGoodForTeeth: false, imageName: "food_candy"),
+        FoodItem(id: "food_carrot", name: "Fresh Carrot", isGoodForTeeth: true, imageName: "food_carrot"),
+        FoodItem(id: "food_soda", name: "Fizzy Soda", isGoodForTeeth: false, imageName: "food_soda"),
+        FoodItem(id: "food_milk", name: "Fresh Milk", isGoodForTeeth: true, imageName: "food_milk"),
+        FoodItem(id: "food_lollipop", name: "Lollipop", isGoodForTeeth: false, imageName: "food_lollipop"),
+        FoodItem(id: "food_apple_2", name: "Crisp Apple", isGoodForTeeth: true, imageName: "food_apple"),
+        FoodItem(id: "food_candy_2", name: "Sweet Candy", isGoodForTeeth: false, imageName: "food_candy")
     ]
 
     public init() {}
@@ -46,27 +46,27 @@ public final class HippoFoodEngine: ObservableObject, @unchecked Sendable {
 
     public func feedToHippo() -> (success: Bool, message: String) {
         guard let food = getCurrentFood() else {
-            return (false, "Đã hết thức ăn!")
+            return (false, "No more food!")
         }
         currentItemIndex += 1
         if food.isGoodForTeeth {
             score += food.points
-            return (true, "Hà mã rất thích \(food.name)! Răng chắc khỏe hơn! (+\(food.points) pts)")
+            return (true, "Hippo loves \(food.name)! Teeth grow stronger! (+\(food.points) pts)")
         } else {
-            return (false, "Ôi không! \(food.name) chứa nhiều đường gây sâu răng đấy!")
+            return (false, "Oh no! \(food.name) is full of sugar and causes cavities!")
         }
     }
 
     public func throwInTrash() -> (success: Bool, message: String) {
         guard let food = getCurrentFood() else {
-            return (false, "Đã hết thức ăn!")
+            return (false, "No more food!")
         }
         currentItemIndex += 1
         if !food.isGoodForTeeth {
             score += food.points
-            return (true, "Đúng rồi! Vứt \(food.name) vào thùng rác để bảo vệ răng! (+\(food.points) pts)")
+            return (true, "Great job! Discarding \(food.name) protects teeth! (+\(food.points) pts)")
         } else {
-            return (false, "Tiếc quá! \(food.name) rất tốt cho men răng mà!")
+            return (false, "Oops! \(food.name) is actually healthy for teeth!")
         }
     }
 

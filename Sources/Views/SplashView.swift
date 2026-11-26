@@ -45,7 +45,7 @@ public struct SplashView: View {
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
 
-                    Text("✨ Nụ Cười Sáng - Bé Khỏe Vui ✨")
+                    Text("✨ Bright Smile - Happy & Healthy Kids ✨")
                         .font(.system(size: 14, weight: .bold))
                         .foregroundColor(Color.white.opacity(0.9))
                 }

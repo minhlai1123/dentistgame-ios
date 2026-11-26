@@ -8,10 +8,10 @@ public enum DifficultyLevel: String, CaseIterable, Codable, Sendable {
 
     public var title: String {
         switch self {
-        case .tutorial: return "Tập Sự: Khởi Động Đánh Răng"
-        case .easy: return "Dễ: Cạo Vôi & Trị Sâu Răng Nhẹ"
-        case .medium: return "Trung Bình: Nha Khoa Tổng Hợp"
-        case .hard: return "Khó: Thử Thách Bác Sĩ Toàn Diện"
+        case .tutorial: return "Tutorial: Tooth Brushing Basics"
+        case .easy: return "Easy: Scaling & Mild Cavities"
+        case .medium: return "Medium: Comprehensive Clinic"
+        case .hard: return "Hard: Master Doctor Challenge"
         }
     }
 

@@ -63,7 +63,7 @@ public struct ResultView: View {
                         .font(.system(size: 22, weight: .black))
                         .foregroundColor(Color(red: 0.06, green: 0.09, blue: 0.16))
 
-                    Text("Bệnh nhân \(character.name) đã có nụ cười rạng rỡ!")
+                    Text("Patient \(character.name) now has a bright, healthy smile!")
                         .font(.system(size: 13))
                         .foregroundColor(.secondary)
                         .multilineTextAlignment(.center)

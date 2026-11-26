@@ -24,12 +24,12 @@ public struct DecoratedTooth: Identifiable, Sendable, Equatable {
 
 public final class FashionBracesEngine: ObservableObject, @unchecked Sendable {
     @Published public var teeth: [DecoratedTooth] = [
-        DecoratedTooth(id: "T02", toothName: "Răng R-Tiền Hàm"),
-        DecoratedTooth(id: "T03", toothName: "Răng R-Cửa"),
-        DecoratedTooth(id: "T04", toothName: "Răng L-Cửa"),
-        DecoratedTooth(id: "T05", toothName: "Răng L-Tiền Hàm"),
-        DecoratedTooth(id: "T09", toothName: "Răng Dưới R-Cửa"),
-        DecoratedTooth(id: "T10", toothName: "Răng Dưới L-Cửa")
+        DecoratedTooth(id: "T02", toothName: "Upper Right Premolar"),
+        DecoratedTooth(id: "T03", toothName: "Upper Right Incisor"),
+        DecoratedTooth(id: "T04", toothName: "Upper Left Incisor"),
+        DecoratedTooth(id: "T05", toothName: "Upper Left Premolar"),
+        DecoratedTooth(id: "T09", toothName: "Lower Right Incisor"),
+        DecoratedTooth(id: "T10", toothName: "Lower Left Incisor")
     ]
 
     public let availableColors: [String] = [

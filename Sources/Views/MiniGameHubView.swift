@@ -10,28 +10,28 @@ public enum MiniGameType: String, Identifiable, CaseIterable {
 
     public var title: String {
         switch self {
-        case .hippoFood: return "🦛 Cho Hà Mã Ăn & Phân Loại"
-        case .frogBug: return "🐸 Chú Ếch Bắt Vi Khuẩn"
-        case .bacteriaBlaster: return "🔫 Bắn Tia Laser Diệt Khuẩn"
-        case .fashionBraces: return "✨ Niềng Răng Thời Trang"
+        case .hippoFood: return "🦛 Hippo Food Sorting"
+        case .frogBug: return "🐸 Frog Bug Catching"
+        case .bacteriaBlaster: return "🔫 Bacteria Laser Shooter"
+        case .fashionBraces: return "✨ Fashion Braces Studio"
         }
     }
 
     public var badge: String {
         switch self {
-        case .hippoFood: return "Dinh Dưỡng"
-        case .frogBug: return "Phản Xạ"
-        case .bacteriaBlaster: return "Hành Động"
-        case .fashionBraces: return "Sáng Tạo"
+        case .hippoFood: return "Nutrition"
+        case .frogBug: return "Reflexes"
+        case .bacteriaBlaster: return "Action"
+        case .fashionBraces: return "Creativity"
         }
     }
 
     public var description: String {
         switch self {
-        case .hippoFood: return "Phân biệt thức ăn tốt cho men răng và bánh kẹo gây sâu răng."
-        case .frogBug: return "Dùng lưỡi chú ếch đớp sạch những vi khuẩn bay quanh răng."
-        case .bacteriaBlaster: return "Bắn hạ các quái vật sâu răng nhảy nhót trước khi hết giờ!"
-        case .fashionBraces: return "Thiết kế mắc cài sắc màu và gắn đá quý lấp lánh cho nụ cười."
+        case .hippoFood: return "Sort healthy tooth-strengthening food from cavity-causing sweets."
+        case .frogBug: return "Use the frog's tongue to catch pesky bacteria flying around teeth."
+        case .bacteriaBlaster: return "Shoot bouncy cavity monsters with the laser blaster before time runs out!"
+        case .fashionBraces: return "Design colorful brackets and shiny gems for a fashionable smile."
         }
     }
 
@@ -84,10 +84,10 @@ public struct MiniGameHubView: View {
                     }
 
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("MINI-GAMES GIÁO DỤC")
+                        Text("EDUCATIONAL MINI-GAMES")
                             .font(.system(size: 20, weight: .black))
                             .foregroundColor(Color(red: 0.06, green: 0.09, blue: 0.16))
-                        Text("4 trò chơi rèn luyện bảo vệ răng miệng")
+                        Text("4 interactive games for healthy dental habits")
                             .font(.system(size: 13))
                             .foregroundColor(.secondary)
                     }

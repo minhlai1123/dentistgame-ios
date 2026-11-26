@@ -93,7 +93,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#8D5524",
             hairColorHex: "#1A1A1A",
             shirtColorHex: "#F4B400",
-            description: "Cậu bé năng động hay quên chải răng, răng bám nhiều vết bẩn đồ ngọt và vôi răng dày.",
+            description: "An energetic boy who forgets to brush. His teeth are covered in candy stains and thick tartar.",
             dentalProblems: [.dirtStained, .calculus],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T03": .calculus, "T06": .calculus,
@@ -110,7 +110,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FFDBAC",
             hairColorHex: "#FAD02C",
             shirtColorHex: "#0F9D58",
-            description: "Cô bé thích ăn kẹo dẻo ban đêm, có 2 răng cửa sâu nặng bị quái vật vi khuẩn tấn công.",
+            description: "Loves chewy gummy candies at night. She has two cavities attacked by naughty sugar monsters.",
             dentalProblems: [.bacteria, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T02": .bacteria, "T08": .bacteria, "T11": .dirtStained
@@ -126,7 +126,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#F1C27D",
             hairColorHex: "#2C3437",
             shirtColorHex: "#E91E63",
-            description: "Cậu bé thích cắn đá lạnh, men răng bị ố bẩn và bám vôi răng kẽ lợi.",
+            description: "Likes chewing on ice cubes. His enamel is stained with stubborn plaque along the gumline.",
             dentalProblems: [.dirtStained, .calculus],
             initialTeeth: applyStates([
                 "T02": .dirtStained, "T03": .calculus, "T05": .dirtStained,
@@ -143,7 +143,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#5C3836",
             hairColorHex: "#111111",
             shirtColorHex: "#9C27B0",
-            description: "Cô bé cá tính có răng khấp khểnh, cần vệ sinh tẩy mảng bám và lấy cao răng.",
+            description: "A fun-loving girl with crowded teeth that need a gentle clean and plaque removal.",
             dentalProblems: [.dirtStained, .calculus, .bacteria],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T03": .bacteria, "T04": .calculus,
@@ -161,7 +161,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FFDFC4",
             hairColorHex: "#FF4081",
             shirtColorHex: "#2196F3",
-            description: "Bé gái bị sâu răng và viêm nướu, có vi khuẩn đục khoét men răng cần điều trị triệt để.",
+            description: "Has sore tooth cavities and swollen gums caused by hungry germs. She needs gentle care!",
             dentalProblems: [.bacteria, .dirtStained],
             initialTeeth: applyStates([
                 "T02": .dirtStained, "T04": .bacteria, "T06": .dirtStained,
@@ -173,12 +173,12 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
     public static func createBen() -> CharacterModel {
         CharacterModel(
             id: "char_06_ben",
-            name: "Bác Ben",
+            name: "Uncle Ben",
             gender: "male",
             skinToneHex: "#C68642",
             hairColorHex: "#E0E0E0",
             shirtColorHex: "#212121",
-            description: "Bác giáo sư đãng trí có 2 răng lung lay hoại tử cần nhổ bỏ, trồng răng sứ và cạo sạch vôi răng.",
+            description: "An absent-minded professor with two loose decayed teeth that need gentle removal and implants.",
             dentalProblems: [.necroticCracked, .calculus, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T03": .calculus, "T04": .necroticCracked,
@@ -196,7 +196,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FED0B8",
             hairColorHex: "#D84315",
             shirtColorHex: "#42A5F5",
-            description: "Bé trai 5 tuổi thích ăn mứt dâu tây, răng cửa dính nhiều mảng bám ngọt màu đỏ cam.",
+            description: "A 5-year-old boy who loves strawberry jam. His front teeth are covered in sweet orange stains.",
             dentalProblems: [.dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T02": .dirtStained, "T06": .dirtStained,
@@ -213,7 +213,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FDEBD0",
             hairColorHex: "#3E2723",
             shirtColorHex: "#80CBC4",
-            description: "Bé gái thích uống trà mật ong ấm, có mảng ố vàng trên men răng và một ít vôi răng nhẹ.",
+            description: "Loves warm honey tea. She has yellow stains on her enamel and mild tartar near the gums.",
             dentalProblems: [.dirtStained, .calculus],
             initialTeeth: applyStates([
                 "T02": .dirtStained, "T03": .calculus, "T06": .dirtStained,
@@ -230,7 +230,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#E0A96D",
             hairColorHex: "#795548",
             shirtColorHex: "#FF9800",
-            description: "Cậu bé mê ăn kẹo dẻo hoa quả, kẹo dính chặt kẽ răng tạo mảng bám thức ăn dày.",
+            description: "Loves fruity gummies. Sticky candy residue has formed thick food stains between his teeth.",
             dentalProblems: [.dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T02": .dirtStained, "T04": .dirtStained,
@@ -247,7 +247,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FFF0E1",
             hairColorHex: "#8D4925",
             shirtColorHex: "#BA68C8",
-            description: "Cô bé thích sinh tố việt quất, men răng tím sẫm và có cao răng kẽ dưới.",
+            description: "Enjoys blueberry smoothies. Her enamel has dark stains and stubborn plaque on the lower teeth.",
             dentalProblems: [.dirtStained, .calculus],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T03": .calculus, "T05": .dirtStained,
@@ -264,7 +264,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#9E6B47",
             hairColorHex: "#1C1917",
             shirtColorHex: "#1565C0",
-            description: "Cậu bé lén ăn socola đen trước khi ngủ, có 2 răng hàm sâu có vi khuẩn đỏ đục khoét.",
+            description: "Snuck dark chocolate before bed. Two molars have deep cavities where red germs are hiding.",
             dentalProblems: [.bacteria, .calculus, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T02": .bacteria, "T03": .calculus,
@@ -281,7 +281,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#D7A374",
             hairColorHex: "#2E1C0C",
             shirtColorHex: "#FF5252",
-            description: "Bé gái năng động hay quên dùng chỉ nha khoa, vôi răng dày bám cổ răng kèm 1 ổ sâu.",
+            description: "An active girl who forgets to floss. She has heavy tartar along her tooth collars and one cavity.",
             dentalProblems: [.calculus, .bacteria, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .calculus, "T03": .dirtStained, "T04": .bacteria,
@@ -299,7 +299,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#E5B887",
             hairColorHex: "#004D40",
             shirtColorHex: "#CDDC39",
-            description: "Cậu bé nghịch ngợm cắn phải kẹo cứng, mẻ men răng và vi khuẩn xâm nhập vào ngà răng.",
+            description: "Playfully bit on hard candy, chipping his enamel and letting bacteria penetrate the dentin.",
             dentalProblems: [.bacteria, .dirtStained],
             initialTeeth: applyStates([
                 "T02": .dirtStained, "T03": .bacteria, "T06": .bacteria,
@@ -316,7 +316,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#B87B4C",
             hairColorHex: "#1F2937",
             shirtColorHex: "#00ACC1",
-            description: "Bé gái thích ăn kem que lạnh buốt, răng nhạy cảm kèm theo mảng bám vôi cứng chân răng.",
+            description: "Loves ice pops. She has sensitive teeth with hardened tartar deposits around her gums.",
             dentalProblems: [.calculus, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .calculus, "T02": .dirtStained, "T03": .calculus,
@@ -334,7 +334,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FCD5B5",
             hairColorHex: "#C2593F",
             shirtColorHex: "#2E7D32",
-            description: "Cậu bé mê nước ngọt có gas, acid làm mòn men răng tạo nhiều ổ sâu nhỏ quanh răng cửa.",
+            description: "Drinks too much soda. The acid eroded his enamel, creating small cavity spots across front teeth.",
             dentalProblems: [.bacteria, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T02": .bacteria, "T04": .bacteria,
@@ -352,7 +352,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FEE3D4",
             hairColorHex: "#0F172A",
             shirtColorHex: "#B71C1C",
-            description: "Bé trai đeo kính cận bị sâu răng nặng gây đau nhức tủy, cần tiêm tê và nạo sạch vi khuẩn sâu.",
+            description: "A boy with glasses experiencing toothache. Needs gentle anesthesia and cavity treatment.",
             dentalProblems: [.bacteria, .calculus, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T02": .bacteria, "T03": .calculus,
@@ -370,7 +370,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#42221A",
             hairColorHex: "#050505",
             shirtColorHex: "#F59E0B",
-            description: "Bé gái cá tính cắn phải hạt quả cứng làm nứt vỡ 1 chiếc răng hàm hoại tử, cần nhổ và cấy răng sứ.",
+            description: "Bit on a hard fruit pit and cracked a molar. Needs gentle extraction and a shiny new porcelain crown.",
             dentalProblems: [.necroticCracked, .calculus, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T03": .calculus, "T04": .necroticCracked,
@@ -388,7 +388,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#CF9563",
             hairColorHex: "#4A2E18",
             shirtColorHex: "#1E3A8A",
-            description: "Cậu bé có vôi răng bám sâu dưới nướu và một răng sâu ẩn ngầm, cần cạo vôi và điều trị toàn diện.",
+            description: "Has deep subgingival tartar and hidden cavities requiring careful scaling and treatment.",
             dentalProblems: [.calculus, .bacteria, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .calculus, "T02": .dirtStained, "T03": .bacteria,
@@ -406,7 +406,7 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
             skinToneHex: "#FCE2C4",
             hairColorHex: "#111827",
             shirtColorHex: "#EC4899",
-            description: "Bé gái châu Á bị tổ hợp đa bệnh lý: vừa bám vôi răng, vừa có răng sâu và một răng cửa lung lay.",
+            description: "A friendly Asian girl with multiple dental needs: tartar buildup, cavities, and a loose front tooth.",
             dentalProblems: [.necroticCracked, .bacteria, .calculus, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .dirtStained, "T02": .bacteria, "T03": .calculus,
@@ -419,12 +419,12 @@ public struct CharacterModel: Identifiable, Codable, Sendable, Equatable {
     public static func createArthur() -> CharacterModel {
         CharacterModel(
             id: "char_20_arthur",
-            name: "Bác Arthur",
+            name: "Captain Arthur",
             gender: "male",
             skinToneHex: "#B07A4B",
             hairColorHex: "#F3F4F6",
             shirtColorHex: "#0F172A",
-            description: "Thuyền trưởng già đi biển lâu năm, cao răng đóng khối, 2 răng hoại tử và dị vật xương cá kẹt kẽ răng.",
+            description: "An old sea captain with thick calculus, two decayed teeth, and fishbone debris trapped in teeth.",
             dentalProblems: [.necroticCracked, .calculus, .dirtStained],
             initialTeeth: applyStates([
                 "T01": .calculus, "T02": .dirtStained, "T03": .calculus,

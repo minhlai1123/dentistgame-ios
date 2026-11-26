@@ -18,9 +18,9 @@ public enum AppLanguage: String, CaseIterable, Identifiable, Sendable {
 public final class LocalizationManager: ObservableObject, @unchecked Sendable {
     public static let shared = LocalizationManager()
 
-    @Published public var currentLanguage: AppLanguage = .vietnamese
+    @Published public var currentLanguage: AppLanguage = .english
 
-    public init(language: AppLanguage = .vietnamese) {
+    public init(language: AppLanguage = .english) {
         self.currentLanguage = language
     }
 

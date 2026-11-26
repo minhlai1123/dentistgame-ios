@@ -5,7 +5,7 @@ public struct HippoFoodSortingView: View {
     public let onBack: () -> Void
 
     @StateObject private var engine = HippoFoodEngine()
-    @State private var message: String = "Kéo hoặc chọn đưa thức ăn tốt cho Hà mã, kẹo ngọt vào thùng rác!"
+    @State private var message: String = "Feed healthy snacks to Hippo, toss sweet junk food in trash!"
     @State private var isGameFinished: Bool = false
 
     public init(audioManager: AudioManager, onBack: @escaping () -> Void) {
@@ -32,7 +32,7 @@ public struct HippoFoodSortingView: View {
 
                     Spacer()
 
-                    Text("CHO HÀ MÃ ĂN")
+                    Text("FEED THE HIPPO")
                         .font(.system(size: 20, weight: .black))
                         .foregroundColor(Color(red: 0.06, green: 0.09, blue: 0.16))
 
@@ -66,7 +66,7 @@ public struct HippoFoodSortingView: View {
                             .frame(width: 100, height: 100)
                             .background(Color.purple.opacity(0.1))
                             .clipShape(Circle())
-                        Text("Hà Mã Thích Táo & Rau")
+                        Text("Hippo Loves Fruit & Veggies")
                             .font(.system(size: 11, weight: .bold))
                             .foregroundColor(.purple)
                     }
@@ -78,7 +78,7 @@ public struct HippoFoodSortingView: View {
                             .frame(width: 80, height: 80)
                             .background(Color.gray.opacity(0.1))
                             .clipShape(Circle())
-                        Text("Thùng Rác Chứa Kẹo")
+                        Text("Trash Can for Sweets")
                             .font(.system(size: 11, weight: .bold))
                             .foregroundColor(.gray)
                     }
@@ -115,7 +115,7 @@ public struct HippoFoodSortingView: View {
                             }) {
                                 HStack {
                                     Text("🦛")
-                                    Text("Cho Hà Mã Ăn")
+                                    Text("Feed Hippo")
                                         .fontWeight(.bold)
                                 }
                                 .foregroundColor(.white)
@@ -140,7 +140,7 @@ public struct HippoFoodSortingView: View {
                             }) {
                                 HStack {
                                     Text("🗑️")
-                                    Text("Vứt Vào Rác")
+                                    Text("Toss in Trash")
                                         .fontWeight(.bold)
                                 }
                                 .foregroundColor(.white)
@@ -165,13 +165,13 @@ public struct HippoFoodSortingView: View {
             if isGameFinished {
                 Color.black.opacity(0.4).ignoresSafeArea()
                 VStack(spacing: 16) {
-                    Text("🎉 XUẤT SẮC! 🎉")
+                    Text("🎉 EXCELLENT! 🎉")
                         .font(.system(size: 24, weight: .black))
                         .foregroundColor(.yellow)
-                    Text("Bạn đã hoàn thành phân loại thức ăn!")
+                    Text("You completed the food sorting challenge!")
                         .font(.system(size: 14))
                         .foregroundColor(.white)
-                    Text("Điểm số: \(engine.score) điểm")
+                    Text("Score: \(engine.score) pts")
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(.white)
 
@@ -180,7 +180,7 @@ public struct HippoFoodSortingView: View {
                         engine.reset()
                         isGameFinished = false
                     }) {
-                        Text("Chơi Lại")
+                        Text("Play Again")
                             .fontWeight(.bold)
                             .foregroundColor(.white)
                             .padding(.horizontal, 24)

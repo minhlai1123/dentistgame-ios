@@ -32,7 +32,7 @@ public struct BacteriaLaserShooterView: View {
 
                     Spacer()
 
-                    Text("BẮN TIA LASER")
+                    Text("LASER BLASTER")
                         .font(.system(size: 20, weight: .black))
                         .foregroundColor(.white)
 
@@ -50,7 +50,7 @@ public struct BacteriaLaserShooterView: View {
                 }
                 .padding(.horizontal)
 
-                Text("Chạm vào màn hình để khai hỏa tia laser diệt trừ vi khuẩn!")
+                Text("Tap screen to fire laser beams at cavity bacteria!")
                     .font(.system(size: 13))
                     .foregroundColor(.white.opacity(0.8))
                     .padding(.top, 4)
@@ -124,7 +124,7 @@ public struct BacteriaLaserShooterView: View {
                 // Game Over Overlay
                 if engine.isGameOver() {
                     VStack(spacing: 12) {
-                        Text(engine.isVictory() ? "🎉 THẮNG LỢI! DIỆT SẠCH VI KHUẨN! 🎉" : "⏰ HẾT GIỜ RỒI! ⏰")
+                        Text(engine.isVictory() ? "🎉 VICTORY! ALL GERMS ELIMINATED! 🎉" : "⏰ TIME'S UP! ⏰")
                             .font(.system(size: 16, weight: .bold))
                             .foregroundColor(engine.isVictory() ? .green : .orange)
 
@@ -132,7 +132,7 @@ public struct BacteriaLaserShooterView: View {
                             audioManager.playButtonClick()
                             engine.reset()
                         }) {
-                            Text("Chơi Lại")
+                            Text("Play Again")
                                 .fontWeight(.bold)
                                 .foregroundColor(.white)
                                 .padding(.horizontal, 22)

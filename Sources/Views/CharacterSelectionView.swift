@@ -78,10 +78,10 @@ public struct CharacterSelectionView: View {
                     Spacer()
 
                     VStack(spacing: 2) {
-                        Text("CHỌN BỆNH NHÂN")
+                        Text("CHOOSE PATIENT")
                             .font(.system(size: 22, weight: .heavy, design: .rounded))
                             .foregroundColor(Color(red: 0.06, green: 0.09, blue: 0.16))
-                        Text("20 bé hoạt hình đang chờ khám nha khoa")
+                        Text("20 cartoon patients waiting for dental care")
                             .font(.system(size: 12, weight: .medium, design: .rounded))
                             .foregroundColor(Color(red: 0.28, green: 0.33, blue: 0.41))
                     }
@@ -113,7 +113,7 @@ public struct CharacterSelectionView: View {
                         HStack(spacing: 10) {
                             Text("🎮")
                                 .font(.system(size: 20))
-                            Text("KHÁM PHÁ 4 MINI-GAMES GIÁO DỤC")
+                            Text("EXPLORE 4 EDUCATIONAL MINI-GAMES")
                                 .font(.system(size: 13, weight: .heavy, design: .rounded))
                                 .foregroundColor(.white)
                             Spacer()
@@ -136,21 +136,21 @@ public struct CharacterSelectionView: View {
                     .padding(.horizontal, 16)
                 }
 
-                // Filter Tabs (Tất Cả, Dễ, Vừa, Khó)
+                // Filter Tabs (All, Easy, Medium, Hard)
                 HStack(spacing: 8) {
-                    FilterChip(title: "Tất Cả (20)", isSelected: selectedFilter == 0) {
+                    FilterChip(title: "All (20)", isSelected: selectedFilter == 0) {
                         audioManager.playButtonClick()
                         selectedFilter = 0
                     }
-                    FilterChip(title: "Dễ (7)", isSelected: selectedFilter == 1) {
+                    FilterChip(title: "Easy (7)", isSelected: selectedFilter == 1) {
                         audioManager.playButtonClick()
                         selectedFilter = 1
                     }
-                    FilterChip(title: "Vừa (7)", isSelected: selectedFilter == 2) {
+                    FilterChip(title: "Medium (7)", isSelected: selectedFilter == 2) {
                         audioManager.playButtonClick()
                         selectedFilter = 2
                     }
-                    FilterChip(title: "Khó (6)", isSelected: selectedFilter == 3) {
+                    FilterChip(title: "Hard (6)", isSelected: selectedFilter == 3) {
                         audioManager.playButtonClick()
                         selectedFilter = 3
                     }
@@ -176,7 +176,7 @@ public struct CharacterSelectionView: View {
                 let diff = DifficultyLevel.getLevelForCharacter(characterId: patient.id)
                 PatientIntroDialog(
                     character: patient,
-                    difficultyTitle: diff.title.components(separatedBy: ":").first ?? "Bệnh nhân",
+                    difficultyTitle: diff.title.components(separatedBy: ":").first ?? "Patient",
                     onDismiss: {
                         selectedPatient = nil
                     },
@@ -242,7 +242,7 @@ public struct CharacterCard: View {
 
                 // Difficulty badge
                 let diff = DifficultyLevel.getLevelForCharacter(characterId: character.id)
-                Text(diff.title.components(separatedBy: ":").first ?? "Dễ")
+                Text(diff.title.components(separatedBy: ":").first ?? "Easy")
                     .font(.system(size: 10, weight: .heavy, design: .rounded))
                     .foregroundColor(Color.skyBlueDark)
                     .padding(.horizontal, 8)
@@ -257,7 +257,7 @@ public struct CharacterCard: View {
                     .lineLimit(2)
                     .frame(height: 28)
 
-                Text("KHÁM RĂNG")
+                Text("EXAMINE")
                     .font(.system(size: 12, weight: .heavy, design: .rounded))
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

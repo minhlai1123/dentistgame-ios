@@ -8,10 +8,10 @@ public struct StageProgressBarView: View {
     }
 
     private let stages: [(DentalStage, String)] = [
-        (.brushing, "1. Chải Răng"),
-        (.scaling, "2. Cạo Vôi"),
-        (.decay, "3. Trị Sâu"),
-        (.surgery, "4. Phẫu Thuật")
+        (.brushing, "1. Brushing"),
+        (.scaling, "2. Scaling"),
+        (.decay, "3. Cavity"),
+        (.surgery, "4. Surgery")
     ]
 
     private func stageIndex(_ stage: DentalStage) -> Int {

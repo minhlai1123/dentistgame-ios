@@ -92,18 +92,18 @@ public final class StageCoordinator: ObservableObject, @unchecked Sendable {
                 let totalDirt = teeth.filter { $0.state == .dirtStained }.count
                 let initialDirt = 5
                 let pct = Float(max(0, initialDirt - totalDirt)) / Float(initialDirt)
-                return (min(max(pct, 0.0), 1.0), "Dùng bàn chải chà đều lên các răng ố vàng để làm sạch!")
+                return (min(max(pct, 0.0), 1.0), "Use the toothbrush to brush away yellow stains!")
 
             case .scaling:
                 let totalCalc = teeth.filter { $0.state == .calculus }.count
                 let initialCalc = 4
                 let pct = Float(max(0, initialCalc - totalCalc)) / Float(initialCalc)
-                return (min(max(pct, 0.0), 1.0), "Rê đầu móc cạo vôi siêu âm để loại bỏ mảng bám vôi quanh nướu!")
+                return (min(max(pct, 0.0), 1.0), "Use the ultrasonic scaler to remove tartar plaque!")
 
             case .decay:
                 let cleanInDecay = teeth.filter { $0.state == .clean }.count
                 let pct = Float(cleanInDecay) / Float(max(1, teeth.count))
-                return (min(max(pct, 0.0), 1.0), "Dùng máy khoan nạo sạch sâu răng, bơm keo, chiếu đèn UV và xịt nước!")
+                return (min(max(pct, 0.0), 1.0), "Drill cavities, apply resin, cure with UV light, and rinse clean!")
 
             case .surgery:
                 let remainingDebris = debrisList.filter { !$0.isRemoved }.count
@@ -111,18 +111,18 @@ public final class StageCoordinator: ObservableObject, @unchecked Sendable {
                 let pct: Float = (remainingDebris == 0 && remainingSurgery == 0) ? 1.0 : 0.5
                 let msg: String
                 if remainingDebris > 0 {
-                    msg = "Dùng nhíp gắp sạch dị vật trong khoang miệng!"
+                    msg = "Use tweezers to remove trapped food debris!"
                 } else if !isAnesthetized {
-                    msg = "Dùng ống tiêm gây tê nướu trước khi nhổ răng hỏng nhé!"
+                    msg = "Use syringe to apply gentle anesthesia before extracting!"
                 } else if remainingSurgery > 0 {
-                    msg = "Dùng kìm nhổ răng hư rồi gắn răng sứ thay thế vào!"
+                    msg = "Use forceps to extract decayed teeth, then place new implants!"
                 } else {
-                    msg = "Ca phẫu thuật hoàn thành xuất sắc!"
+                    msg = "Surgery completed successfully!"
                 }
                 return (pct, msg)
 
             case .complete:
-                return (1.0, "Tuyệt vời! Hàm răng đã hoàn toàn sạch bóng và khỏe mạnh!")
+                return (1.0, "Awesome! The smile is sparkling clean and healthy!")
             }
         }()
 

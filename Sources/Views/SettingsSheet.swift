@@ -23,13 +23,13 @@ public struct SettingsSheet: View {
     public var body: some View {
         NavigationStack {
             Form {
-                Section(header: Text("ÂM THANH").font(.system(size: 13, weight: .bold))) {
+                Section(header: Text("AUDIO").font(.system(size: 13, weight: .bold))) {
                     Toggle(isOn: $audioManager.isSfxEnabled) {
                         Label(t("settings_sfx"), systemImage: "speaker.wave.2.fill")
                     }
                     if audioManager.isSfxEnabled {
                         VStack(alignment: .leading) {
-                            Text("Âm lượng SFX: \(Int(audioManager.sfxVolume * 100))%")
+                            Text("SFX Volume: \(Int(audioManager.sfxVolume * 100))%")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             Slider(value: $audioManager.sfxVolume, in: 0...1) {
@@ -47,7 +47,7 @@ public struct SettingsSheet: View {
 
                     if audioManager.isBgmEnabled {
                         VStack(alignment: .leading) {
-                            Text("Âm lượng BGM: \(Int(audioManager.bgmVolume * 100))%")
+                            Text("BGM Volume: \(Int(audioManager.bgmVolume * 100))%")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             Slider(
@@ -92,16 +92,16 @@ public struct SettingsSheet: View {
                     }
                 }
 
-                Section(header: Text("CHÍNH SÁCH BẢO MẬT & TRẺ EM").font(.system(size: 13, weight: .bold))) {
+                Section(header: Text("PRIVACY POLICY & KIDS SAFETY").font(.system(size: 13, weight: .bold))) {
                     HStack(spacing: 12) {
                         Image(systemName: "checkmark.shield.fill")
                             .foregroundColor(.green)
                             .font(.title2)
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("100% Không Quảng Cáo (Zero Ads)")
+                            Text("100% Zero Ads (No Advertisements)")
                                 .font(.system(size: 15, weight: .bold))
                                 .foregroundColor(.primary)
-                            Text("Trò chơi tuyệt đối không chứa quảng cáo, không thu thập dữ liệu cá nhân, an toàn tuyệt đối cho trẻ em.")
+                            Text("This game contains absolutely no ads, no trackers, and collects no personal data. 100% safe for kids.")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                         }

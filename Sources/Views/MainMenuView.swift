@@ -109,11 +109,11 @@ public struct MainMenuView: View {
                     }
 
                     VStack(spacing: 4) {
-                        Text("BÁC SĨ NHA KHOA")
+                        Text("CHILDREN'S DOCTOR")
                             .font(.system(size: 28, weight: .black, design: .rounded))
                             .foregroundColor(Color.skyBlueDark)
 
-                        Text("CHĂM SÓC RĂNG MIỆNG CHO BÉ")
+                        Text("DENTAL CLINIC ADVENTURE")
                             .font(.system(size: 13, weight: .bold, design: .rounded))
                             .foregroundColor(Color(red: 0.28, green: 0.33, blue: 0.41))
                             .tracking(1.2)
@@ -132,7 +132,7 @@ public struct MainMenuView: View {
                         HStack(spacing: 10) {
                             Text("▶")
                                 .font(.system(size: 18, weight: .heavy))
-                            Text("BẮT ĐẦU CHỮA RĂNG")
+                            Text("START CLINIC")
                                 .font(.system(size: 17, weight: .heavy, design: .rounded))
                         }
                         .foregroundColor(.white)
@@ -157,7 +157,7 @@ public struct MainMenuView: View {
                         HStack(spacing: 10) {
                             Text("🎮")
                                 .font(.system(size: 20))
-                            Text("4 MINI-GAMES GIÁO DỤC")
+                            Text("4 MINI-GAMES")
                                 .font(.system(size: 15, weight: .heavy, design: .rounded))
                         }
                         .foregroundColor(.white)
@@ -182,7 +182,7 @@ public struct MainMenuView: View {
                         HStack(spacing: 8) {
                             Text("🗺️")
                                 .font(.system(size: 18))
-                            Text("BẢN ĐỒ THỬ THÁCH (CẤP ĐỘ)")
+                            Text("LEVEL CHALLENGE MAP")
                                 .font(.system(size: 14, weight: .bold, design: .rounded))
                                 .foregroundColor(Color(hex: "334155"))
                         }

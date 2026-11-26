@@ -18,17 +18,17 @@ public final class ToothStateMachine: Sendable {
         guard tool.canInteract(with: tooth.state) else {
             let friendlyHint: String
             if tool == .resinTube && tooth.state == .bacteria {
-                friendlyHint = "Bé hãy dùng Máy Khoan nạo sạch vết sâu trước, rồi mới bơm keo trám nhé!"
+                friendlyHint = "Please use the Dental Drill to clean the cavity first, then apply resin!"
             } else if tool == .resinTube && tooth.state == .resinFilled {
-                friendlyHint = "Răng đã có keo trám rồi! Giờ hãy dùng Đèn UV chiếu đông cứng men răng nhé."
+                friendlyHint = "Resin is already applied! Now use the UV Light to cure and harden it."
             } else if tool == .curingLight && tooth.state == .cavityDrilled {
-                friendlyHint = "Hãy dùng Ống Keo Trám bơm đầy lỗ sâu trước khi chiếu đèn UV nhé!"
+                friendlyHint = "Fill the cavity with Composite Resin before using the UV Light!"
             } else if tool == .drill && tooth.state == .resinFilled {
-                friendlyHint = "Răng đã được trám keo! Hãy dùng Đèn UV chiếu đông cứng nhé."
+                friendlyHint = "Resin is filled! Use the UV Light to cure it."
             } else if tool == .forceps && tooth.state != .necroticCracked {
-                friendlyHint = "Răng này còn tốt, không cần nhổ! Chỉ nhổ răng hoại tử nứt vỡ thôi nhé."
+                friendlyHint = "This tooth is still healthy! Only extract broken necrotic teeth."
             } else {
-                friendlyHint = "Dụng cụ '\(tool.displayName)' không thể dùng cho trạng thái '\(tooth.state.displayName)'."
+                friendlyHint = "Tool '\(tool.displayName)' cannot be used on '\(tooth.state.displayName)'."
             }
             return .rejected(
                 currentTooth: tooth,
@@ -49,7 +49,7 @@ public final class ToothStateMachine: Sendable {
                 updatedTooth: tooth.copy(withState: nextState, progress: 0.0),
                 isStateChanged: true,
                 pointsEarned: points,
-                message: "Đặt vật liệu thành công!"
+                message: "Applied successfully!"
             )
         }
 
@@ -60,7 +60,7 @@ public final class ToothStateMachine: Sendable {
                 updatedTooth: tooth.copy(withProgress: newProgress),
                 isStateChanged: false,
                 pointsEarned: 5,
-                message: "Đang thao tác..."
+                message: "Treating tooth..."
             )
         } else {
             let nextState: ToothState
@@ -92,7 +92,7 @@ public final class ToothStateMachine: Sendable {
                 updatedTooth: tooth.copy(withState: nextState, progress: 0.0),
                 isStateChanged: true,
                 pointsEarned: points,
-                message: "Hoàn thành công đoạn!"
+                message: "Step completed!"
             )
         }
     }

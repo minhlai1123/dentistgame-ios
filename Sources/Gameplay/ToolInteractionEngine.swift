@@ -79,7 +79,7 @@ public final class ToolInteractionEngine {
 
     public func applyActiveTool(to tooth: ToothModel) -> TransitionResult {
         guard let tool = activeTool else {
-            return .rejected(currentTooth: tooth, reason: "Chưa chọn dụng cụ nào.")
+            return .rejected(currentTooth: tooth, reason: "No tool selected.")
         }
         return stateMachine.applyTool(tooth: tooth, tool: tool)
     }

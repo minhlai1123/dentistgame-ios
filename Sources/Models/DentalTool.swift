@@ -33,16 +33,16 @@ public enum DentalTool: String, CaseIterable, Identifiable, Sendable {
 
     public var displayName: String {
         switch self {
-        case .toothbrush: return "Bàn Chải"
-        case .scaler: return "Móc Cạo Vôi"
-        case .drill: return "Máy Khoan"
-        case .resinTube: return "Keo Trám"
-        case .curingLight: return "Đèn UV"
-        case .waterSpray: return "Vòi Xịt Nước"
-        case .syringe: return "Ống Tiêm"
-        case .forceps: return "Kìm Nhổ Răng"
-        case .implant: return "Răng Sứ"
-        case .tweezers: return "Nhíp Mổ"
+        case .toothbrush: return "Toothbrush"
+        case .scaler: return "Ultrasonic Scaler"
+        case .drill: return "Dental Drill"
+        case .resinTube: return "Composite Resin"
+        case .curingLight: return "UV Curing Light"
+        case .waterSpray: return "Water Spray"
+        case .syringe: return "Anesthetic Syringe"
+        case .forceps: return "Dental Forceps"
+        case .implant: return "Porcelain Implant"
+        case .tweezers: return "Surgical Tweezers"
         }
     }
 

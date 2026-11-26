@@ -29,10 +29,10 @@ public struct ForeignDebris: Identifiable, Sendable, Equatable {
 
     public static func createDefaultDebris() -> [ForeignDebris] {
         return [
-            ForeignDebris(id: "debris_banana", name: "Vỏ chuối", normalizedX: 0.42, normalizedY: 0.48, imageName: "debris_banana"),
-            ForeignDebris(id: "debris_twig", name: "Cành cây nhỏ", normalizedX: 0.58, normalizedY: 0.50, imageName: "debris_twig"),
-            ForeignDebris(id: "debris_bone", name: "Xương cá nhỏ", normalizedX: 0.36, normalizedY: 0.55, imageName: "debris_bone"),
-            ForeignDebris(id: "debris_biscuit", name: "Vụn bánh quy", normalizedX: 0.64, normalizedY: 0.54, imageName: "debris_biscuit")
+            ForeignDebris(id: "debris_banana", name: "Banana Peel", normalizedX: 0.42, normalizedY: 0.48, imageName: "debris_banana"),
+            ForeignDebris(id: "debris_twig", name: "Small Twig", normalizedX: 0.58, normalizedY: 0.50, imageName: "debris_twig"),
+            ForeignDebris(id: "debris_bone", name: "Fish Bone", normalizedX: 0.36, normalizedY: 0.55, imageName: "debris_bone"),
+            ForeignDebris(id: "debris_biscuit", name: "Cookie Crumb", normalizedX: 0.64, normalizedY: 0.54, imageName: "debris_biscuit")
         ]
     }
 

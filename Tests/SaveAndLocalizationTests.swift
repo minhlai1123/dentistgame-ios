@@ -34,7 +34,7 @@ final class SaveAndLocalizationTests: XCTestCase {
         XCTAssertEqual(leo.name, "Leo")
         XCTAssertEqual(leo.gender, "male")
         XCTAssertEqual(leo.skinToneHex, "#8D5524")
-        XCTAssertTrue(leo.description.contains("Cậu bé"))
+        XCTAssertTrue(leo.description.contains("An energetic boy"))
 
         // Maya: blonde girl
         let maya = characters.first { $0.id == "char_02_maya" }!
@@ -64,7 +64,7 @@ final class SaveAndLocalizationTests: XCTestCase {
 
         // Ben: grey-haired elderly man
         let ben = characters.first { $0.id == "char_06_ben" }!
-        XCTAssertEqual(ben.name, "Bác Ben")
+        XCTAssertEqual(ben.name, "Uncle Ben")
         XCTAssertEqual(ben.gender, "male")
         XCTAssertEqual(ben.skinToneHex, "#C68642")
         XCTAssertEqual(ben.hairColorHex, "#E0E0E0")

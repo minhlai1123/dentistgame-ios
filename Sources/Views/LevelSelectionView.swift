@@ -41,12 +41,12 @@ public struct LevelSelectionView: View {
     }
 
     private let levelItems: [LevelCardItem] = [
-        LevelCardItem(level: .tutorial, characterId: "char_01_leo", missionTitle: "Cấp 1: Khởi Động Đánh Răng", requiredStars: 0),
-        LevelCardItem(level: .easy, characterId: "char_02_maya", missionTitle: "Cấp 2 (A): Vệ Sinh & Trị Sâu Răng Nhẹ", requiredStars: 1),
-        LevelCardItem(level: .easy, characterId: "char_03_kenji", missionTitle: "Cấp 2 (B): Cạo Vôi & Khám Men Răng", requiredStars: 1),
-        LevelCardItem(level: .medium, characterId: "char_04_amara", missionTitle: "Cấp 3 (A): Nha Khoa Đa Khoa & Nhổ Răng", requiredStars: 3),
-        LevelCardItem(level: .medium, characterId: "char_05_mia", missionTitle: "Cấp 3 (B): Phục Hồi Ổ Sâu Vi Khuẩn", requiredStars: 3),
-        LevelCardItem(level: .hard, characterId: "char_06_ben", missionTitle: "Cấp 4: Thử Thách Bác Sĩ Toàn Diện", requiredStars: 6)
+        LevelCardItem(level: .tutorial, characterId: "char_01_leo", missionTitle: "Level 1: Tooth Brushing Basics", requiredStars: 0),
+        LevelCardItem(level: .easy, characterId: "char_02_maya", missionTitle: "Level 2 (A): Clean & Mild Cavities", requiredStars: 1),
+        LevelCardItem(level: .easy, characterId: "char_03_kenji", missionTitle: "Level 2 (B): Scaling & Enamel Check", requiredStars: 1),
+        LevelCardItem(level: .medium, characterId: "char_04_amara", missionTitle: "Level 3 (A): Clinic Care & Extraction", requiredStars: 3),
+        LevelCardItem(level: .medium, characterId: "char_05_mia", missionTitle: "Level 3 (B): Germ Cavity Restoration", requiredStars: 3),
+        LevelCardItem(level: .hard, characterId: "char_06_ben", missionTitle: "Level 4: Ultimate Doctor Challenge", requiredStars: 6)
     ]
 
     public var body: some View {
@@ -130,7 +130,7 @@ public struct LevelSelectionView: View {
                                             .font(.system(size: 14, weight: .bold))
                                             .foregroundColor(isUnlocked ? Color(red: 0.06, green: 0.09, blue: 0.16) : .secondary)
 
-                                        Text("Bệnh nhân: \(assignedCharacter.name)")
+                                        Text("Patient: \(assignedCharacter.name)")
                                             .font(.system(size: 12, weight: .medium))
                                             .foregroundColor(isUnlocked ? .blue : .gray)
 

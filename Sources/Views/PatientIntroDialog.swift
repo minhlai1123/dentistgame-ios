@@ -5,7 +5,7 @@ import SwiftUI
 public struct PatientIntroDialog: View {
     public let character: CharacterModel
     public let difficultyTitle: String
-    public var startBtnText: String = "BẮT ĐẦU ĐIỀU TRỊ"
+    public var startBtnText: String = "START TREATMENT"
     public let onDismiss: () -> Void
     public let onStartTreatment: () -> Void
 
@@ -14,7 +14,7 @@ public struct PatientIntroDialog: View {
     public init(
         character: CharacterModel,
         difficultyTitle: String,
-        startBtnText: String = "BẮT ĐẦU ĐIỀU TRỊ",
+        startBtnText: String = "START TREATMENT",
         onDismiss: @escaping () -> Void,
         onStartTreatment: @escaping () -> Void
     ) {
@@ -135,13 +135,13 @@ public struct PatientIntroDialog: View {
     private func missionInfo(for state: ToothState) -> (String, Color) {
         switch state {
         case .dirtStained:
-            return ("Chải Răng", Color(red: 0.01, green: 0.52, blue: 0.78))
+            return ("Brushing", Color(red: 0.01, green: 0.52, blue: 0.78))
         case .calculus:
-            return ("Cạo Vôi", Color(red: 0.02, green: 0.59, blue: 0.41))
+            return ("Scaling", Color(red: 0.02, green: 0.59, blue: 0.41))
         case .bacteria:
-            return ("Trị Sâu Răng", Color(red: 0.86, green: 0.15, blue: 0.15))
+            return ("Cavity Fill", Color(red: 0.86, green: 0.15, blue: 0.15))
         case .necroticCracked:
-            return ("Trồng Răng Sứ", Color(red: 0.49, green: 0.23, blue: 0.93))
+            return ("Dental Implant", Color(red: 0.49, green: 0.23, blue: 0.93))
         default:
             return (state.displayName, Color.gray)
         }
